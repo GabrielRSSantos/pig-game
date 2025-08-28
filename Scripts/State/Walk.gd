@@ -2,6 +2,7 @@ extends PlayerState
 
 func enter(previous_state_path: String, data := {}) -> void:
 	player.state.text = "WALK"
+	print("WALK")
 	player.animation_player.play("Walk")
 
 func physics_update(_delta: float) -> void:

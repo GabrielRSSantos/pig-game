@@ -2,6 +2,7 @@ extends PlayerState
 
 func enter(previous_state_path: String, data := {}) -> void:
 	player.state.text = "ATTACK"
+	print("ATTACK")
 	player.animation_player.play("Attack")
 	
 	if not player.animation_player.is_connected("animation_finished", on_animation_finished):
@@ -16,6 +17,7 @@ func physics_update(_delta: float) -> void:
 	player.velocity.x = player.SPEED * input_direction_x
 	
 	if player.is_on_floor() and Input.is_action_just_pressed("W"):
+		player.velocity.y = 0
 		finished.emit("Jump")
 	if not player.is_on_floor():
 		finished.emit("Fall")
@@ -23,4 +25,8 @@ func physics_update(_delta: float) -> void:
 	player.move_and_slide()
 
 func on_animation_finished() -> void:
-	finished.emit("Idle")
+	#player.velocity.y = 0
+	if player.is_on_floor():
+		finished.emit("Idle")
+	else:
+		finished.emit("Fall")
