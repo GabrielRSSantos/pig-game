@@ -3,7 +3,7 @@ extends PlayerState
 func enter(previous_state_path: String, data := {}) -> void:
 	player.state.text = "FALL"
 	print("FALL")
-	#player.velocity.y = 0
+	player.animation_player.play("Fall")
 
 func physics_update(_delta: float) -> void:
 	player.velocity += player.get_gravity() * _delta

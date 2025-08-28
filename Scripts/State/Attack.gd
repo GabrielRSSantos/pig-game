@@ -19,8 +19,6 @@ func physics_update(_delta: float) -> void:
 	if player.is_on_floor() and Input.is_action_just_pressed("W"):
 		player.velocity.y = 0
 		finished.emit("Jump")
-	if not player.is_on_floor():
-		finished.emit("Fall")
 			
 	player.move_and_slide()
 

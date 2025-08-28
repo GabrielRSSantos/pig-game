@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://mjy5wfv7t838"]
+[gd_scene load_steps=6 format=4 uid="uid://mjy5wfv7t838"]
 
 [ext_resource type="Texture2D" uid="uid://cpsjrfiqu203h" path="res://Assets/Sprites/14-TileSets/Terrain (32x32).png" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://c3la4ttvr40x7" path="res://Scenes/player.tscn" id="2_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://dkj28mmpqfgya" path="res://Scenes/enemy.tscn" id="3_8gbba"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bo1nx"]
 texture = ExtResource("1_jjgbg")
@@ -430,3 +431,6 @@ tile_set = SubResource("TileSet_8gbba")
 
 [node name="Player" parent="." instance=ExtResource("2_bo1nx")]
 position = Vector2(102, 245)
+
+[node name="Enemy" parent="." instance=ExtResource("3_8gbba")]
+position = Vector2(254, 253)

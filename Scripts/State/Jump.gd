@@ -4,7 +4,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 	player.state.text = "JUMP"
 	print("JUMP")
 	player.velocity.y = player.JUMP_VELOCITY 
-	# player.animation_player.play("Jump")
+	player.animation_player.play("Jump")
 
 func physics_update(_delta: float) -> void:
 	player.velocity.y += player.gravity * _delta

@@ -10,7 +10,6 @@ func physics_update(_delta: float) -> void:
 	var input_direction_x := Input.get_axis("A", "D")
 	
 	player.animation_player.flip_h = true if input_direction_x < 0 else false if input_direction_x > 0 else player.animation_player.flip_h
-	
 	player.velocity.x = player.SPEED * input_direction_x
 	
 	if player.velocity.x == 0:
