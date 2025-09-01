@@ -7,13 +7,13 @@ func enter(previous_state_path: String, data := {}) -> void:
 	player.animation_player.play("Jump")
 
 func physics_update(_delta: float) -> void:
-	player.velocity.y += player.gravity * _delta
-
-	if Input.is_action_just_pressed("E"):
-		finished.emit("Attack")
+	player.velocity += player.get_gravity() * _delta
+	
 	if player.velocity.y >= 0:
 		finished.emit("Fall")
-	if Input.is_action_just_released("W") and player.velocity.y < 0:
+	if Input.is_action_just_pressed("E"):
+		finished.emit("Attack")
+	if Input.is_action_just_released("W"):
 		finished.emit("Fall")
 
 	var input_direction_x := Input.get_axis("A", "D")

@@ -1,9 +1,11 @@
-[gd_scene load_steps=40 format=3 uid="uid://c3la4ttvr40x7"]
+[gd_scene load_steps=68 format=3 uid="uid://c3la4ttvr40x7"]
 
 [ext_resource type="Script" uid="uid://ch2kldeu3nir0" path="res://Scripts/player.gd" id="1_6t5aa"]
 [ext_resource type="Texture2D" uid="uid://byctoruth7yoo" path="res://Assets/Sprites/01-King Human/Attack (78x58).png" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://338yg4yir5j0" path="res://Assets/Sprites/01-King Human/Idle (78x58).png" id="1_v0iea"]
+[ext_resource type="Texture2D" uid="uid://56t83e6kumhg" path="res://Assets/Sprites/01-King Human/Dead (78x58).png" id="3_0gysh"]
 [ext_resource type="Texture2D" uid="uid://d1i0yf8kup1ec" path="res://Assets/Sprites/01-King Human/Fall (78x58).png" id="3_pu2lt"]
+[ext_resource type="Texture2D" uid="uid://c6gy0c4dqvjbw" path="res://Assets/Sprites/01-King Human/Hit (78x58).png" id="4_2ijsl"]
 [ext_resource type="Texture2D" uid="uid://bwbg7r7s1aif2" path="res://Assets/Sprites/01-King Human/Run (78x58).png" id="4_8erm5"]
 [ext_resource type="Script" uid="uid://b064j6ki73qpq" path="res://Scripts/State/StateMachine.gd" id="4_fkybt"]
 [ext_resource type="Texture2D" uid="uid://ddi72tufc2msy" path="res://Assets/Sprites/01-King Human/Jump (78x58).png" id="5_ukyrk"]
@@ -11,7 +13,20 @@
 [ext_resource type="Script" uid="uid://8ukqoaomqbvf" path="res://Scripts/State/Attack.gd" id="6_x3wgy"]
 [ext_resource type="Script" uid="uid://865txhqxj8ts" path="res://Scripts/State/Walk.gd" id="7_3smsa"]
 [ext_resource type="Script" uid="uid://po638eojwis3" path="res://Scripts/State/Jump.gd" id="9_f1ek2"]
+[ext_resource type="Script" uid="uid://drjitw5xb7eyr" path="res://Scripts/State/Hit.gd" id="10_p1odr"]
 [ext_resource type="Script" uid="uid://dy72nhl2sh4db" path="res://Scripts/State/Fall.gd" id="10_tx1dd"]
+[ext_resource type="Script" uid="uid://c6m31rchordxf" path="res://Scripts/State/Dead.gd" id="11_vfarp"]
+[ext_resource type="Texture2D" uid="uid://c3lc4tqnx68ad" path="res://Assets/Sprites/12-Live and Coins/3_LifesBar.png" id="13_bi64h"]
+[ext_resource type="Texture2D" uid="uid://dybmwmf66u8cd" path="res://Assets/Sprites/12-Live and Coins/NormalBar.png" id="14_bi64h"]
+[ext_resource type="Texture2D" uid="uid://by1yath8efblb" path="res://Assets/Sprites/Coins/coins_0.png" id="15_wpjfl"]
+[ext_resource type="Texture2D" uid="uid://dmajkaxlk7h24" path="res://Assets/Sprites/Coins/coins_1.png" id="16_bi64h"]
+[ext_resource type="Texture2D" uid="uid://machoeimpwr3" path="res://Assets/Sprites/Coins/coins_2.png" id="17_2ijsl"]
+[ext_resource type="Texture2D" uid="uid://ds56fc0twr5m0" path="res://Assets/Sprites/Coins/coins_3.png" id="18_p1odr"]
+[ext_resource type="Texture2D" uid="uid://dafxd2arnu1c3" path="res://Assets/Sprites/Coins/coins_4.png" id="19_0gysh"]
+[ext_resource type="Texture2D" uid="uid://cnevpddsdd0n" path="res://Assets/Sprites/Coins/coins_5.png" id="20_vfarp"]
+[ext_resource type="Texture2D" uid="uid://b7bkojx2rgc3w" path="res://Assets/Sprites/Coins/coins_6.png" id="21_y6uwr"]
+[ext_resource type="Texture2D" uid="uid://1og5ncv56fpj" path="res://Assets/Sprites/Coins/coins_7.png" id="22_83xs0"]
+[ext_resource type="FontFile" uid="uid://b32dyhoroj22o" path="res://Assets/Fonts/Tiny5-Regular.ttf" id="22_wpjfl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ukyrk"]
 atlas = ExtResource("1_cvnsp")
@@ -25,9 +40,33 @@ region = Rect2(80, 0, 77, 58)
 atlas = ExtResource("1_cvnsp")
 region = Rect2(157, 0, 77, 58)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6uwr"]
+atlas = ExtResource("3_0gysh")
+region = Rect2(0, 0, 78, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83xs0"]
+atlas = ExtResource("3_0gysh")
+region = Rect2(78, 0, 78, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypfnu"]
+atlas = ExtResource("3_0gysh")
+region = Rect2(156, 0, 78, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xuaoq"]
+atlas = ExtResource("3_0gysh")
+region = Rect2(234, 0, 78, 58)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ijsl"]
 atlas = ExtResource("3_pu2lt")
 region = Rect2(0, 0, 78, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0gysh"]
+atlas = ExtResource("4_2ijsl")
+region = Rect2(0, 0, 78, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vfarp"]
+atlas = ExtResource("4_2ijsl")
+region = Rect2(78, 0, 78, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cvnsp"]
 atlas = ExtResource("1_v0iea")
@@ -127,10 +166,38 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_y6uwr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83xs0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ypfnu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xuaoq")
+}],
+"loop": false,
+"name": &"Dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_2ijsl")
 }],
 "loop": true,
 "name": &"Fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0gysh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vfarp")
+}],
+"loop": true,
+"name": &"Hit",
 "speed": 5.0
 }, {
 "frames": [{
@@ -211,11 +278,89 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7dp3o"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p1odr"]
+size = Vector2(22, 26)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pu2lt"]
 size = Vector2(31, 39)
 
-[node name="Player" type="CharacterBody2D"]
-collision_mask = 15
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_ypfnu"]
+frames = 8
+speed_scale = 8.0
+frame_0/texture = ExtResource("15_wpjfl")
+frame_1/texture = ExtResource("16_bi64h")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("17_2ijsl")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("18_p1odr")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("19_0gysh")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("20_vfarp")
+frame_5/duration = 1.0
+frame_6/texture = ExtResource("21_y6uwr")
+frame_6/duration = 1.0
+frame_7/texture = ExtResource("22_83xs0")
+frame_7/duration = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_wpjfl"]
+font = ExtResource("22_wpjfl")
+font_size = 32
+
+[sub_resource type="Animation" id="Animation_2ijsl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/PlayerUI/CoinBar:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-240, 133)]
+}
+
+[sub_resource type="Animation" id="Animation_bi64h"]
+resource_name = "coin_label_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/PlayerUI/CoinBar:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.76, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-240, 133), Vector2(30, 133), Vector2(17, 133)]
+}
+
+[sub_resource type="Animation" id="Animation_p1odr"]
+resource_name = "coin_label_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/PlayerUI/CoinBar:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.142094, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(17, 133), Vector2(35, 133), Vector2(-240, 133)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0gysh"]
+_data = {
+&"RESET": SubResource("Animation_2ijsl"),
+&"coin_label_in": SubResource("Animation_bi64h"),
+&"coin_label_out": SubResource("Animation_p1odr")
+}
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+collision_mask = 143
 script = ExtResource("1_6t5aa")
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
@@ -231,14 +376,21 @@ text = "TESTE"
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(7, -15)
 sprite_frames = SubResource("SpriteFrames_ukyrk")
-animation = &"Attack"
+animation = &"Dead"
 autoplay = "Idle"
-frame = 2
-frame_progress = 1.0
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -15)
 shape = SubResource("CapsuleShape2D_7dp3o")
+
+[node name="PlayerHurtBox" type="Area2D" parent="."]
+position = Vector2(0, -10)
+collision_mask = 34
+
+[node name="PlayerHurtBoxCollision" type="CollisionShape2D" parent="PlayerHurtBox"]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_p1odr")
+debug_color = Color(0.91025, 0.000104155, 0.730643, 0.42)
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_fkybt")
@@ -246,6 +398,12 @@ initial_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("5_x3wgy")
+
+[node name="Dead" type="Node" parent="StateMachine"]
+script = ExtResource("11_vfarp")
+
+[node name="Hit" type="Node" parent="StateMachine"]
+script = ExtResource("10_p1odr")
 
 [node name="Attack" type="Node" parent="StateMachine"]
 script = ExtResource("6_x3wgy")
@@ -259,11 +417,103 @@ script = ExtResource("9_f1ek2")
 [node name="Fall" type="Node" parent="StateMachine"]
 script = ExtResource("10_tx1dd")
 
-[node name="AttackArea" type="Area2D" parent="."]
+[node name="AttackArea" type="Area2D" parent="." groups=["Attack"]]
+collision_layer = 16
+collision_mask = 38
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 position = Vector2(27.5, -20.5)
 shape = SubResource("RectangleShape2D_pu2lt")
+disabled = true
 debug_color = Color(0.846947, 0.284513, 0.628704, 0.42)
 
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="PlayerUI" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LifeBar" type="TextureRect" parent="UI/PlayerUI"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+offset_left = 23.0
+offset_top = 25.0
+offset_right = 89.0
+offset_bottom = 59.0
+scale = Vector2(3, 3)
+texture = ExtResource("13_bi64h")
+stretch_mode = 2
+
+[node name="Hearts" type="HBoxContainer" parent="UI/PlayerUI"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0442708
+anchor_top = 0.0570988
+anchor_right = 0.134715
+anchor_bottom = 0.106568
+offset_left = 23.0
+offset_top = 25.0
+offset_right = 22.808
+offset_bottom = 24.944
+alignment = 1
+
+[node name="CoinBar" type="TextureRect" parent="UI/PlayerUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.014
+anchor_top = 0.205
+anchor_right = 0.213
+anchor_bottom = 0.353
+offset_left = -256.128
+offset_top = 0.159988
+offset_right = -256.376
+offset_bottom = 0.255997
+grow_vertical = 2
+texture = ExtResource("14_bi64h")
+stretch_mode = 4
+
+[node name="Coins" type="HBoxContainer" parent="UI/PlayerUI/CoinBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.0
+offset_top = -22.0
+offset_right = 61.0
+offset_bottom = 42.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="UI/PlayerUI/CoinBar/Coins"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AnimatedTexture_ypfnu")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="UI/PlayerUI/CoinBar/Coins"]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+text = "200"
+label_settings = SubResource("LabelSettings_wpjfl")
+
+[node name="CoinLabelTimer" type="Timer" parent="UI/PlayerUI/CoinBar/Coins"]
+wait_time = 3.0
+one_shot = true
+
+[node name="CoinLabel" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_0gysh")
+}
+speed_scale = 2.0
+
+[connection signal="body_entered" from="PlayerHurtBox" to="." method="_on_player_hurt_box_body_entered"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="timeout" from="UI/PlayerUI/CoinBar/Coins/CoinLabelTimer" to="." method="_on_coin_label_timer_timeout"]

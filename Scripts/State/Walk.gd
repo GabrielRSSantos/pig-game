@@ -6,7 +6,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 	player.animation_player.play("Walk")
 
 func physics_update(_delta: float) -> void:
-	player.velocity.y += player.gravity * _delta
+	player.velocity += player.get_gravity() * _delta
 	var input_direction_x := Input.get_axis("A", "D")
 	
 	player.animation_player.flip_h = true if input_direction_x < 0 else false if input_direction_x > 0 else player.animation_player.flip_h

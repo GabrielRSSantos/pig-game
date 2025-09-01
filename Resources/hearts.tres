@@ -1,0 +1,29 @@
+[gd_resource type="AnimatedTexture" load_steps=9 format=3 uid="uid://c6bnoohins7n8"]
+
+[ext_resource type="Texture2D" uid="uid://luq6hnud5buo" path="res://Assets/Sprites/Hearts/Heart_0.png" id="1_osnmt"]
+[ext_resource type="Texture2D" uid="uid://bmoqypuc3aoty" path="res://Assets/Sprites/Hearts/Heart_1.png" id="2_8t6js"]
+[ext_resource type="Texture2D" uid="uid://33uscgimftxl" path="res://Assets/Sprites/Hearts/Heart_2.png" id="3_iqhi7"]
+[ext_resource type="Texture2D" uid="uid://dkbbo6w4n06ik" path="res://Assets/Sprites/Hearts/Heart_3.png" id="4_vypb3"]
+[ext_resource type="Texture2D" uid="uid://bjqmkq38uqkud" path="res://Assets/Sprites/Hearts/Heart_4.png" id="5_krpha"]
+[ext_resource type="Texture2D" uid="uid://cl067ldpjb3hf" path="res://Assets/Sprites/Hearts/Heart_5.png" id="6_g1pwj"]
+[ext_resource type="Texture2D" uid="uid://bbwowqbfn82b2" path="res://Assets/Sprites/Hearts/Heart_6.png" id="7_irhle"]
+[ext_resource type="Texture2D" uid="uid://co5dfl4msaht8" path="res://Assets/Sprites/Hearts/Heart_7.png" id="8_cxg6k"]
+
+[resource]
+frames = 8
+speed_scale = 8.0
+frame_0/texture = ExtResource("1_osnmt")
+frame_1/texture = ExtResource("2_8t6js")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("3_iqhi7")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("4_vypb3")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("5_krpha")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("6_g1pwj")
+frame_5/duration = 1.0
+frame_6/texture = ExtResource("7_irhle")
+frame_6/duration = 1.0
+frame_7/texture = ExtResource("8_cxg6k")
+frame_7/duration = 1.0

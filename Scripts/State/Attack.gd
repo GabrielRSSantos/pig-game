@@ -4,6 +4,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 	player.state.text = "ATTACK"
 	print("ATTACK")
 	player.animation_player.play("Attack")
+	player.collision_attack.disabled = false
 	
 	if not player.animation_player.is_connected("animation_finished", on_animation_finished):
 		player.animation_player.connect("animation_finished", on_animation_finished)
@@ -28,3 +29,6 @@ func on_animation_finished() -> void:
 		finished.emit("Idle")
 	else:
 		finished.emit("Fall")
+
+func exit() -> void:
+	player.collision_attack.disabled = true
