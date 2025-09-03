@@ -65,6 +65,7 @@ K={
 2d_physics/layer_6="HitBoxEnemy"
 2d_physics/layer_7="Coin"
 2d_physics/layer_8="Wall"
+2d_physics/layer_9="Door"
 
 [rendering]
 

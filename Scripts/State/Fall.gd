@@ -14,8 +14,8 @@ func physics_update(_delta: float) -> void:
 
 	if Input.is_action_just_pressed("E"):
 		finished.emit("Attack")
-	if player.is_on_ceiling():
-		player.velocity.y = 0
+	#if player.is_on_ceiling():
+		#player.velocity.y = 0
 	if player.is_on_floor() and input_direction_x == 0:
 		player.velocity.y = 0
 		finished.emit("Idle")

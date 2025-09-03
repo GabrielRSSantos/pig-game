@@ -3,13 +3,10 @@ extends PlayerState
 func enter(previous_state_path: String, data := {}) -> void:
 	player.state.text = "ATTACK"
 	print("ATTACK")
-	print(player.actual_attack)
 	if player.actual_attack == player.ATTACK.UP:
-		print("player.ATTACK.UP")
 		player.animation_player.play("Attack")
 		player.actual_attack = player.ATTACK.DOWN
 	else:
-		print("player.ATTACK.DOWN")
 		player.animation_player.play("DownAttack")
 		player.actual_attack = player.ATTACK.UP
 	player.collision_attack.disabled = false

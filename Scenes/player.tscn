@@ -414,7 +414,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
-collision_mask = 143
+collision_mask = 399
 script = ExtResource("1_6t5aa")
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
@@ -524,9 +524,9 @@ anchor_top = 0.205
 anchor_right = 0.213
 anchor_bottom = 0.353
 offset_left = -256.128
-offset_top = 0.160004
+offset_top = 0.159988
 offset_right = -256.376
-offset_bottom = 0.256012
+offset_bottom = 0.255997
 grow_vertical = 2
 texture = ExtResource("14_bi64h")
 stretch_mode = 4
