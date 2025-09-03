@@ -11,6 +11,10 @@ var gravity = 800
 
 var respawn_player : Vector2 = Vector2(80, 250)
 
+#Player Attack
+enum ATTACK {UP, DOWN}
+var actual_attack = ATTACK.UP
+
 #Player's Coins
 var coins := 0
 var show_label_is_playing := false

@@ -1,8 +1,9 @@
-[gd_scene load_steps=68 format=3 uid="uid://c3la4ttvr40x7"]
+[gd_scene load_steps=76 format=3 uid="uid://c3la4ttvr40x7"]
 
 [ext_resource type="Script" uid="uid://ch2kldeu3nir0" path="res://Scripts/player.gd" id="1_6t5aa"]
 [ext_resource type="Texture2D" uid="uid://byctoruth7yoo" path="res://Assets/Sprites/01-King Human/Attack (78x58).png" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://338yg4yir5j0" path="res://Assets/Sprites/01-King Human/Idle (78x58).png" id="1_v0iea"]
+[ext_resource type="Texture2D" uid="uid://cdt3ekk8d1mk4" path="res://Assets/Sprites/01-King Human/NormalAttack (78x58).png" id="2_83xs0"]
 [ext_resource type="Texture2D" uid="uid://56t83e6kumhg" path="res://Assets/Sprites/01-King Human/Dead (78x58).png" id="3_0gysh"]
 [ext_resource type="Texture2D" uid="uid://d1i0yf8kup1ec" path="res://Assets/Sprites/01-King Human/Fall (78x58).png" id="3_pu2lt"]
 [ext_resource type="Texture2D" uid="uid://c6gy0c4dqvjbw" path="res://Assets/Sprites/01-King Human/Hit (78x58).png" id="4_2ijsl"]
@@ -10,6 +11,7 @@
 [ext_resource type="Script" uid="uid://b064j6ki73qpq" path="res://Scripts/State/StateMachine.gd" id="4_fkybt"]
 [ext_resource type="Texture2D" uid="uid://ddi72tufc2msy" path="res://Assets/Sprites/01-King Human/Jump (78x58).png" id="5_ukyrk"]
 [ext_resource type="Script" uid="uid://c2l4bo6t50yj6" path="res://Scripts/State/Idle.gd" id="5_x3wgy"]
+[ext_resource type="Texture2D" uid="uid://dpjkc1ke61mcn" path="res://Assets/Sprites/01-King Human/Front_attack.png" id="5_y6uwr"]
 [ext_resource type="Script" uid="uid://8ukqoaomqbvf" path="res://Scripts/State/Attack.gd" id="6_x3wgy"]
 [ext_resource type="Script" uid="uid://865txhqxj8ts" path="res://Scripts/State/Walk.gd" id="7_3smsa"]
 [ext_resource type="Script" uid="uid://po638eojwis3" path="res://Scripts/State/Jump.gd" id="9_f1ek2"]
@@ -28,17 +30,17 @@
 [ext_resource type="Texture2D" uid="uid://1og5ncv56fpj" path="res://Assets/Sprites/Coins/coins_7.png" id="22_83xs0"]
 [ext_resource type="FontFile" uid="uid://b32dyhoroj22o" path="res://Assets/Fonts/Tiny5-Regular.ttf" id="22_wpjfl"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ukyrk"]
-atlas = ExtResource("1_cvnsp")
-region = Rect2(3, 0, 77, 58)
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpa8y"]
+atlas = ExtResource("2_83xs0")
+region = Rect2(0, 0, 78, 58)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7dp3o"]
-atlas = ExtResource("1_cvnsp")
-region = Rect2(80, 0, 77, 58)
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbwqj"]
+atlas = ExtResource("2_83xs0")
+region = Rect2(78, 0, 78, 58)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_h4iuc"]
-atlas = ExtResource("1_cvnsp")
-region = Rect2(157, 0, 77, 58)
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwi16"]
+atlas = ExtResource("2_83xs0")
+region = Rect2(156, 0, 78, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y6uwr"]
 atlas = ExtResource("3_0gysh")
@@ -56,9 +58,33 @@ region = Rect2(156, 0, 78, 58)
 atlas = ExtResource("3_0gysh")
 region = Rect2(234, 0, 78, 58)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_wohnl"]
+atlas = ExtResource("1_cvnsp")
+region = Rect2(0, 0, 78, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_36dho"]
+atlas = ExtResource("1_cvnsp")
+region = Rect2(78, 0, 78, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yh6i2"]
+atlas = ExtResource("1_cvnsp")
+region = Rect2(156, 0, 78, 58)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ijsl"]
 atlas = ExtResource("3_pu2lt")
 region = Rect2(0, 0, 78, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nv4vc"]
+atlas = ExtResource("5_y6uwr")
+region = Rect2(9, 0, 93, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gxox"]
+atlas = ExtResource("5_y6uwr")
+region = Rect2(102, 0, 93, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11gg7"]
+atlas = ExtResource("5_y6uwr")
+region = Rect2(195, 0, 93, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0gysh"]
 atlas = ExtResource("4_2ijsl")
@@ -152,13 +178,13 @@ region = Rect2(546, 0, 78, 58)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ukyrk")
+"texture": SubResource("AtlasTexture_qpa8y")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7dp3o")
+"texture": SubResource("AtlasTexture_sbwqj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_h4iuc")
+"texture": SubResource("AtlasTexture_xwi16")
 }],
 "loop": false,
 "name": &"Attack",
@@ -183,10 +209,38 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_wohnl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_36dho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yh6i2")
+}],
+"loop": false,
+"name": &"DownAttack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_2ijsl")
 }],
 "loop": true,
 "name": &"Fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nv4vc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8gxox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11gg7")
+}],
+"loop": true,
+"name": &"FrontAttack",
 "speed": 5.0
 }, {
 "frames": [{
@@ -376,7 +430,7 @@ text = "TESTE"
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(7, -15)
 sprite_frames = SubResource("SpriteFrames_ukyrk")
-animation = &"Dead"
+animation = &"DownAttack"
 autoplay = "Idle"
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
@@ -470,9 +524,9 @@ anchor_top = 0.205
 anchor_right = 0.213
 anchor_bottom = 0.353
 offset_left = -256.128
-offset_top = 0.159988
+offset_top = 0.160004
 offset_right = -256.376
-offset_bottom = 0.255997
+offset_bottom = 0.256012
 grow_vertical = 2
 texture = ExtResource("14_bi64h")
 stretch_mode = 4

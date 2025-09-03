@@ -3,7 +3,15 @@ extends PlayerState
 func enter(previous_state_path: String, data := {}) -> void:
 	player.state.text = "ATTACK"
 	print("ATTACK")
-	player.animation_player.play("Attack")
+	print(player.actual_attack)
+	if player.actual_attack == player.ATTACK.UP:
+		print("player.ATTACK.UP")
+		player.animation_player.play("Attack")
+		player.actual_attack = player.ATTACK.DOWN
+	else:
+		print("player.ATTACK.DOWN")
+		player.animation_player.play("DownAttack")
+		player.actual_attack = player.ATTACK.UP
 	player.collision_attack.disabled = false
 	
 	if not player.animation_player.is_connected("animation_finished", on_animation_finished):
@@ -24,7 +32,6 @@ func physics_update(_delta: float) -> void:
 	player.move_and_slide()
 
 func on_animation_finished() -> void:
-	#player.velocity.y = 0
 	if player.is_on_floor():
 		finished.emit("Idle")
 	else:
