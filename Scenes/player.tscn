@@ -418,7 +418,6 @@ collision_mask = 399
 script = ExtResource("1_6t5aa")
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
-zoom = Vector2(1.5, 1.5)
 
 [node name="State" type="Label" parent="."]
 offset_left = -22.0
