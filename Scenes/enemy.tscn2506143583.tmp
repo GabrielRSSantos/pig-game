@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://dkj28mmpqfgya"]
+[gd_scene load_steps=78 format=3 uid="uid://dkj28mmpqfgya"]
 
 [ext_resource type="Texture2D" uid="uid://ioe4dbup1ci2" path="res://Assets/Sprites/03-Pig/Attack (34x28).png" id="1_1f0kj"]
 [ext_resource type="Script" uid="uid://be6ls8qg8v721" path="res://Scripts/enemy.gd" id="1_287tu"]
@@ -480,14 +480,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_po0sg"]
 size = Vector2(101, 38)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vt4ob"]
-radius = 15.0
-
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 2
 collision_mask = 129
 script = ExtResource("1_287tu")
-distance_to_patrol = 100
 
 [node name="EnemyArea" type="Area2D" parent="."]
 position = Vector2(0, -10)
@@ -525,21 +521,9 @@ debug_color = Color(0, 0.631698, 0.459429, 0.42)
 [node name="EnemySightTimer" type="Timer" parent="EnemySight"]
 wait_time = 2.0
 
-[node name="EnemyCloseDetection" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 1541
-
-[node name="EnemyCloseDetectionCollision" type="CollisionShape2D" parent="EnemyCloseDetection"]
-position = Vector2(0, -10)
-shape = SubResource("CircleShape2D_vt4ob")
-debug_color = Color(0.901961, 0, 0.752941, 0.172549)
-
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("11_56vhr")
 metadata/_custom_type_script = "uid://b064j6ki73qpq"
-
-[node name="Patrol" type="Node" parent="StateMachine"]
-script = ExtResource("15_vt4ob")
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("12_ta2yt")
@@ -549,6 +533,9 @@ script = ExtResource("12_vt4ob")
 
 [node name="Chasing" type="Node" parent="StateMachine"]
 script = ExtResource("12_m4x7e")
+
+[node name="Patrol" type="Node" parent="StateMachine"]
+script = ExtResource("15_vt4ob")
 
 [node name="StateLabel" type="Label" parent="."]
 offset_left = -21.0

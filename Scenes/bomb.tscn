@@ -103,7 +103,7 @@ animations = [{
 radius = 6.0
 
 [node name="Bomb" type="RigidBody2D" groups=["Bomb"]]
-collision_layer = 8
+collision_layer = 512
 collision_mask = 131
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

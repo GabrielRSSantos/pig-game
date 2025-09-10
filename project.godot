@@ -66,6 +66,8 @@ K={
 2d_physics/layer_7="Coin"
 2d_physics/layer_8="Wall"
 2d_physics/layer_9="Door"
+2d_physics/layer_10="Bomb"
+2d_physics/layer_11="Cannon"
 
 [rendering]
 

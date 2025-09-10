@@ -526,7 +526,7 @@ next_area_position = NodePath("../Door3")
 
 [node name="Door3" parent="." node_paths=PackedStringArray("next_area_position") instance=ExtResource("7_3p2jf")]
 position = Vector2(1089, 113)
-next_area_position = NodePath("../Door4")
+next_area_position = NodePath("../Door2")
 
 [node name="Door4" parent="." node_paths=PackedStringArray("next_area_position") instance=ExtResource("7_3p2jf")]
 position = Vector2(46, 657)
