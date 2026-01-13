@@ -5,10 +5,12 @@ var coin = preload("res://Scenes/Coin.tscn")
 @onready var enemy_area: Area2D = $EnemyArea
 @onready var enemy_sprite: AnimatedSprite2D = $EnemySprite
 @onready var collision_enemy_sight: CollisionShape2D = $EnemySight/CollisionEnemySight
+@onready var enemy_attack_box: Area2D = $EnemyAttackBox
 @onready var state_label: Label = $StateLabel
 @onready var state_machine: StateMachine = $StateMachine
 
 @export var distance_to_patrol : int = 0
+@export var enemy_holding_item : Node2D
 
 var player : Player
 
@@ -43,9 +45,11 @@ func direction() -> void:
 		if velocity.x <= 0:
 			enemy_sprite.flip_h = false
 			collision_enemy_sight.position.x = -50
+			enemy_attack_box.position.x = 0
 		else:
 			enemy_sprite.flip_h = true
 			collision_enemy_sight.position.x = 50
+			enemy_attack_box.position.x = 30
 
 func _on_enemy_sight_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
@@ -64,3 +68,7 @@ func _on_enemy_sight_body_exited(body: Node2D) -> void:
 func _on_enemy_sight_timer_timeout() -> void:
 		player = null
 		velocity.x = 0
+
+func _on_enemy_close_detection_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		state_machine._transition_to_next_state("Attack", {"player": body})

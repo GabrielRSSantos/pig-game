@@ -6,6 +6,8 @@ func enter(previous_state_path: String, data := {}) -> void:
 	enemy.enemy_sprite.play("Run")
 
 func physics_update(_delta: float) -> void:
+	#if enemy.enemy_holding_item != null and enemy.enemy_holding_item.is_in_group("Bomb"):
+		#enemy.enemy_sprite.play("ThrowBomb")
 	if enemy.player == null:
 		finished.emit("Idle")
 		

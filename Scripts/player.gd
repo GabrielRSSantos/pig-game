@@ -99,3 +99,10 @@ func _on_player_hurt_box_body_entered(body: Node2D) -> void:
 		$StateMachine._transition_to_next_state("Hit", {"enemy_direction" : body.position})
 		if health == 0:
 			$StateMachine._transition_to_next_state("Dead")
+
+func _on_player_hurt_box_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	if area.is_in_group("EnemyAttack"):
+		take_hit(1)
+		$StateMachine._transition_to_next_state("Hit", {"enemy_direction" : area.position})
+		if health == 0:
+			$StateMachine._transition_to_next_state("Dead")

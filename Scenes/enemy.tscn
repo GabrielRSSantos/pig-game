@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://dkj28mmpqfgya"]
+[gd_scene load_steps=81 format=3 uid="uid://dkj28mmpqfgya"]
 
 [ext_resource type="Texture2D" uid="uid://ioe4dbup1ci2" path="res://Assets/Sprites/03-Pig/Attack (34x28).png" id="1_1f0kj"]
 [ext_resource type="Script" uid="uid://be6ls8qg8v721" path="res://Scripts/enemy.gd" id="1_287tu"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://buqds320rpiqr" path="res://Scripts/EnemyStates/Chasing.gd" id="12_m4x7e"]
 [ext_resource type="Script" uid="uid://cfwwic8dyllin" path="res://Scripts/EnemyStates/Idle.gd" id="12_ta2yt"]
 [ext_resource type="Script" uid="uid://om3v28jsf3c6" path="res://Scripts/EnemyStates/TakeBomb.gd" id="12_vt4ob"]
+[ext_resource type="Script" uid="uid://fy6fax14vep3" path="res://Scripts/EnemyStates/Attack.gd" id="14_hgeoe"]
 [ext_resource type="Script" uid="uid://ckwqd11xyp872" path="res://Scripts/EnemyStates/Patrol.gd" id="15_vt4ob"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0830c"]
@@ -477,11 +478,14 @@ animations = [{
 "speed": 35.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_vt4ob"]
+radius = 8.61532
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_po0sg"]
 size = Vector2(101, 38)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vt4ob"]
-radius = 15.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tk7xo"]
+size = Vector2(10, 24)
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 2
@@ -500,7 +504,7 @@ shape = SubResource("CapsuleShape2D_0830c")
 [node name="EnemySprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(-3, -14)
 sprite_frames = SubResource("SpriteFrames_ta2yt")
-animation = &"Run"
+animation = &"Attack"
 autoplay = "Idle"
 
 [node name="EnemyCollision" type="CollisionShape2D" parent="."]
@@ -513,6 +517,17 @@ scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_6jaer")
 animation = &"Hit"
 
+[node name="EnemyCloseDetection" type="Area2D" parent="."]
+scale = Vector2(4.6, 2.36)
+collision_layer = 2
+collision_mask = 1541
+
+[node name="EnemyCloseDetectionCollision" type="CollisionShape2D" parent="EnemyCloseDetection"]
+position = Vector2(0, -5.08475)
+scale = Vector2(0.407128, 0.762953)
+shape = SubResource("CircleShape2D_vt4ob")
+debug_color = Color(0.901961, 0, 0.752941, 0.172549)
+
 [node name="EnemySight" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 1541
@@ -524,15 +539,7 @@ debug_color = Color(0, 0.631698, 0.459429, 0.42)
 
 [node name="EnemySightTimer" type="Timer" parent="EnemySight"]
 wait_time = 2.0
-
-[node name="EnemyCloseDetection" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 1541
-
-[node name="EnemyCloseDetectionCollision" type="CollisionShape2D" parent="EnemyCloseDetection"]
-position = Vector2(0, -10)
-shape = SubResource("CircleShape2D_vt4ob")
-debug_color = Color(0.901961, 0, 0.752941, 0.172549)
+autostart = true
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("11_56vhr")
@@ -543,6 +550,9 @@ script = ExtResource("15_vt4ob")
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("12_ta2yt")
+
+[node name="Attack" type="Node" parent="StateMachine"]
+script = ExtResource("14_hgeoe")
 
 [node name="TakeBomb" type="Node" parent="StateMachine"]
 script = ExtResource("12_vt4ob")
@@ -556,8 +566,23 @@ offset_top = -49.0
 offset_right = 19.0
 offset_bottom = -26.0
 
+[node name="EnemyAttackBox" type="Area2D" parent="." groups=["EnemyAttack"]]
+collision_layer = 18
+collision_mask = 17
+
+[node name="EnemyAttackBoxCollision" type="CollisionShape2D" parent="EnemyAttackBox"]
+position = Vector2(-14, -12)
+shape = SubResource("RectangleShape2D_tk7xo")
+disabled = true
+debug_color = Color(1, 0, 0.0166664, 0.419608)
+
 [connection signal="area_entered" from="EnemyArea" to="." method="_on_enemy_area_area_entered"]
 [connection signal="animation_finished" from="EnemySprite" to="." method="_on_enemy_sprite_animation_finished"]
+[connection signal="animation_finished" from="EnemySprite" to="StateMachine/Attack" method="_on_enemy_sprite_animation_finished"]
+[connection signal="animation_finished" from="EnemySprite" to="StateMachine/TakeBomb" method="_on_enemy_sprite_animation_finished"]
+[connection signal="body_entered" from="EnemyCloseDetection" to="." method="_on_enemy_close_detection_body_entered"]
+[connection signal="body_entered" from="EnemyCloseDetection" to="StateMachine/TakeBomb" method="_on_enemy_close_detection_body_entered"]
 [connection signal="body_entered" from="EnemySight" to="." method="_on_enemy_sight_body_entered"]
 [connection signal="body_exited" from="EnemySight" to="." method="_on_enemy_sight_body_exited"]
 [connection signal="timeout" from="EnemySight/EnemySightTimer" to="." method="_on_enemy_sight_timer_timeout"]
+[connection signal="body_exited" from="EnemyAttackBox" to="StateMachine/Attack" method="_on_enemy_attack_box_body_exited"]

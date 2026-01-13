@@ -567,6 +567,7 @@ libraries = {
 }
 speed_scale = 2.0
 
+[connection signal="area_shape_entered" from="PlayerHurtBox" to="." method="_on_player_hurt_box_area_shape_entered"]
 [connection signal="body_entered" from="PlayerHurtBox" to="." method="_on_player_hurt_box_body_entered"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
 [connection signal="timeout" from="UI/PlayerUI/CoinBar/Coins/CoinLabelTimer" to="." method="_on_coin_label_timer_timeout"]

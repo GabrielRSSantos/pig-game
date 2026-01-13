@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://fumiwse40lft" path="res://Scenes/bed_room.tscn" id="3_6bp64"]
 [ext_resource type="PackedScene" uid="uid://dkj28mmpqfgya" path="res://Scenes/enemy.tscn" id="3_8gbba"]
-[ext_resource type="PackedScene" uid="uid://dmsukjbn2ebx3" path="res://Scenes/bomb.tscn" id="3_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://c3la4ttvr40x7" path="res://Scenes/player.tscn" id="4_jjvhh"]
 
 [node name="Main" type="Node2D"]
 
@@ -10,10 +10,10 @@
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(790, 88)
-zoom = Vector2(2, 2)
+zoom = Vector2(1.59, 1.59)
 
 [node name="Enemy" parent="." instance=ExtResource("3_8gbba")]
 position = Vector2(874, 106)
 
-[node name="Bomb" parent="." instance=ExtResource("3_jjvhh")]
-position = Vector2(739, 110)
+[node name="Player" parent="." instance=ExtResource("4_jjvhh")]
+position = Vector2(663, 96)
