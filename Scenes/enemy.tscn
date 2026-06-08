@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://dkj28mmpqfgya"]
+[gd_scene format=3 uid="uid://dkj28mmpqfgya"]
 
 [ext_resource type="Texture2D" uid="uid://ioe4dbup1ci2" path="res://Assets/Sprites/03-Pig/Attack (34x28).png" id="1_1f0kj"]
 [ext_resource type="Script" uid="uid://be6ls8qg8v721" path="res://Scripts/enemy.gd" id="1_287tu"]
@@ -483,81 +483,78 @@ size = Vector2(101, 38)
 [sub_resource type="CircleShape2D" id="CircleShape2D_vt4ob"]
 radius = 15.0
 
-[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
+[node name="Enemy" type="CharacterBody2D" unique_id=975370641 groups=["Enemy"]]
 collision_layer = 2
 collision_mask = 129
 script = ExtResource("1_287tu")
 distance_to_patrol = 100
 
-[node name="EnemyArea" type="Area2D" parent="."]
+[node name="EnemyArea" type="Area2D" parent="." unique_id=219931438]
 position = Vector2(0, -10)
 collision_layer = 2
 collision_mask = 17
 
-[node name="AreaCollision" type="CollisionShape2D" parent="EnemyArea"]
+[node name="AreaCollision" type="CollisionShape2D" parent="EnemyArea" unique_id=345335684]
 shape = SubResource("CapsuleShape2D_0830c")
 
-[node name="EnemySprite" type="AnimatedSprite2D" parent="."]
+[node name="EnemySprite" type="AnimatedSprite2D" parent="." unique_id=1153813916]
 position = Vector2(-3, -14)
 sprite_frames = SubResource("SpriteFrames_ta2yt")
-animation = &"Run"
+animation = &"PickBomb"
 autoplay = "Idle"
 
-[node name="EnemyCollision" type="CollisionShape2D" parent="."]
+[node name="EnemyCollision" type="CollisionShape2D" parent="." unique_id=1152113716]
 position = Vector2(0, -10)
 shape = SubResource("CapsuleShape2D_m4x7e")
 
-[node name="HitEffect" type="AnimatedSprite2D" parent="."]
+[node name="HitEffect" type="AnimatedSprite2D" parent="." unique_id=571162045]
 position = Vector2(-4, -8.75)
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_6jaer")
 animation = &"Hit"
 
-[node name="EnemySight" type="Area2D" parent="."]
+[node name="EnemySight" type="Area2D" parent="." unique_id=1928957157]
 collision_layer = 2
 collision_mask = 1541
 
-[node name="CollisionEnemySight" type="CollisionShape2D" parent="EnemySight"]
+[node name="CollisionEnemySight" type="CollisionShape2D" parent="EnemySight" unique_id=203398214]
 position = Vector2(-50, -19)
 shape = SubResource("RectangleShape2D_po0sg")
 debug_color = Color(0, 0.631698, 0.459429, 0.42)
 
-[node name="EnemySightTimer" type="Timer" parent="EnemySight"]
+[node name="EnemySightTimer" type="Timer" parent="EnemySight" unique_id=557979182]
 wait_time = 2.0
 
-[node name="EnemyCloseDetection" type="Area2D" parent="."]
+[node name="EnemyCloseDetection" type="Area2D" parent="." unique_id=1817064803]
 collision_layer = 2
 collision_mask = 1541
 
-[node name="EnemyCloseDetectionCollision" type="CollisionShape2D" parent="EnemyCloseDetection"]
+[node name="EnemyCloseDetectionCollision" type="CollisionShape2D" parent="EnemyCloseDetection" unique_id=705496092]
 position = Vector2(0, -10)
 shape = SubResource("CircleShape2D_vt4ob")
 debug_color = Color(0.901961, 0, 0.752941, 0.172549)
 
-[node name="StateMachine" type="Node" parent="."]
+[node name="StateMachine" type="Node" parent="." unique_id=1579649489]
 script = ExtResource("11_56vhr")
 metadata/_custom_type_script = "uid://b064j6ki73qpq"
 
-[node name="Patrol" type="Node" parent="StateMachine"]
-script = ExtResource("15_vt4ob")
-
-[node name="Idle" type="Node" parent="StateMachine"]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1524716254]
 script = ExtResource("12_ta2yt")
 
-[node name="TakeBomb" type="Node" parent="StateMachine"]
+[node name="Patrol" type="Node" parent="StateMachine" unique_id=252317379]
+script = ExtResource("15_vt4ob")
+
+[node name="TakeBomb" type="Node" parent="StateMachine" unique_id=1157524023]
 script = ExtResource("12_vt4ob")
 
-[node name="Chasing" type="Node" parent="StateMachine"]
+[node name="Chasing" type="Node" parent="StateMachine" unique_id=1995183401]
 script = ExtResource("12_m4x7e")
 
-[node name="StateLabel" type="Label" parent="."]
+[node name="StateLabel" type="Label" parent="." unique_id=414226733]
 offset_left = -21.0
 offset_top = -49.0
 offset_right = 19.0
 offset_bottom = -26.0
 
-[connection signal="area_entered" from="EnemyArea" to="." method="_on_enemy_area_area_entered"]
-[connection signal="animation_finished" from="EnemySprite" to="." method="_on_enemy_sprite_animation_finished"]
-[connection signal="body_entered" from="EnemySight" to="." method="_on_enemy_sight_body_entered"]
-[connection signal="body_exited" from="EnemySight" to="." method="_on_enemy_sight_body_exited"]
-[connection signal="timeout" from="EnemySight/EnemySightTimer" to="." method="_on_enemy_sight_timer_timeout"]
+[connection signal="body_entered" from="EnemySight" to="StateMachine/Patrol" method="_on_enemy_sight_body_entered"]
+[connection signal="body_entered" from="EnemySight" to="StateMachine/Idle" method="_on_enemy_sight_body_entered"]

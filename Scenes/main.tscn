@@ -1,19 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://mjy5wfv7t838"]
+[gd_scene format=3 uid="uid://mjy5wfv7t838"]
 
 [ext_resource type="PackedScene" uid="uid://fumiwse40lft" path="res://Scenes/bed_room.tscn" id="3_6bp64"]
 [ext_resource type="PackedScene" uid="uid://dkj28mmpqfgya" path="res://Scenes/enemy.tscn" id="3_8gbba"]
-[ext_resource type="PackedScene" uid="uid://dmsukjbn2ebx3" path="res://Scenes/bomb.tscn" id="3_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://c3la4ttvr40x7" path="res://Scenes/player.tscn" id="3_jjvhh"]
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" unique_id=1683417708]
 
-[node name="Castle" parent="." instance=ExtResource("3_6bp64")]
+[node name="Castle" parent="." unique_id=839234122 instance=ExtResource("3_6bp64")]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1894829022]
 position = Vector2(790, 88)
 zoom = Vector2(2, 2)
 
-[node name="Enemy" parent="." instance=ExtResource("3_8gbba")]
+[node name="Enemy" parent="." unique_id=1284209833 instance=ExtResource("3_8gbba")]
 position = Vector2(874, 106)
 
-[node name="Bomb" parent="." instance=ExtResource("3_jjvhh")]
-position = Vector2(739, 110)
+[node name="Player" parent="." unique_id=1169604891 instance=ExtResource("3_jjvhh")]
+position = Vector2(696, 97)

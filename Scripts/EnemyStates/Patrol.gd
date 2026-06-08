@@ -19,3 +19,8 @@ func physics_update(_delta: float) -> void:
 		printerr("MUDAR DIRECAO PARA DIREITA")
 		direction = 1
 	enemy.velocity.x = direction * 100
+
+
+func _on_enemy_sight_body_entered(body: Node2D) -> void:
+	enemy.player = body
+	enemy.state_machine._transition_to_next_state("Chasing")
